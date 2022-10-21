@@ -1,0 +1,15 @@
+.slideContent{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.slideClick{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding:10px;
+    background-color: rgb(78, 194, 98);
+    cursor: pointer;
+}
+.mySlide img{
+    border-radius: 5px;
+}
