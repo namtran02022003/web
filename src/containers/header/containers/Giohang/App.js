@@ -1,18 +1,26 @@
-import { AddArr } from "../../../content/containers/content/iphone/App"
+import { CartItem } from "../../../content/containers/content/iphone/App"
 import { useState } from "react"
 
+
 function App({ onSetDisplay }) {
-    console.log(AddArr)
-    const [a,setA] = useState(AddArr)
-   function deleteItem(index){
-   AddArr.splice(index,1)
-   setA(a)
+    
+    const [a,setA] = useState(CartItem)
+   function deleteItem(id){
+   var newCartItem = a.filter((item)=> item.id != id)
+   setA(newCartItem)
+   var m = a.filter((item)=> item.id == id)
+   CartItem.splice(a.indexOf(...m),1)
+   setA(newCartItem)
    }
-   
+ var total = a.reduce((c,b)=>{
+   return c + Number(b.price)
+ },0)
+ console.log(total)
     return (
-        <>
+        <> 
             <div className=" positionfixed">
                 <div className="container position-relative p-5 bg-white">
+                    
                     <h2>gio hang</h2>
                     <hr></hr>
                     <div className="row m-0">
@@ -23,8 +31,8 @@ function App({ onSetDisplay }) {
                         <div className="col-4">
                             <h4 className="text-center">so luong</h4><hr /></div>
                     </div>
-                    <>
-                        {a.map((item,index) => {
+                    {total == 0 ? <h2 className="text-center">gio hang rong</h2> : 
+                        a.map((item,index) => {
                             return (
                                 <div key={index}>
                                     <div  className="row m-0 align-items-center my-2 ">
@@ -37,12 +45,13 @@ function App({ onSetDisplay }) {
                                         <div className="col-3">
                                             <div className="navbar justify-content-center  ">
                                                 <p>{item.price}</p>
+                                               
                                             </div>
                                         </div>
                                         <div className="col-4">
                                             <div className="nav align-items-center justify-content-around">
                                                 <p className="m-0">1</p>
-                                                <button onClick={()=>deleteItem(index)} className="btn btn-info">xoa</button>
+                                                <button onClick={()=>deleteItem(item.id)} className="btn btn-info">xoa</button>
                                             </div>
                                         </div>
                                     </div>
@@ -50,9 +59,11 @@ function App({ onSetDisplay }) {
                                     </div>
                             )
                         })}
-
-                    </>
-                    <button onClick={onSetDisplay} className="btn-close"></button>
+<button onClick={onSetDisplay} className="btn-close"></button>
+                    <div className="d-flex justify-content-end align-items-center">
+                        <p className="m-0 px-5">tong:{total} </p>
+                        <button className="btn btn-info">thanh toan</button>
+                    </div>
                 </div>
             </div>
         </>

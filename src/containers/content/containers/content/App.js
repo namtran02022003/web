@@ -1,7 +1,7 @@
 import Iphone from "./iphone/Iphone"
 
-import Xiaomi from "./xiaomi/Laptop"
-import Samsung from "./samsung/Phukien"
+import Xiaomi from "./xiaomi/Xiaomi"
+import Samsung from "./samsung/Samsung"
 import Oppo from "./oppo/Oppo"
 
 

@@ -1,6 +1,11 @@
+import App from "../iphone/App"
+
 function Oppo(){
     return(
-        <>opppo</>
+       <App 
+       tenmuc="page oppo"
+       API = "http://localhost:3000/value"
+       />
     )
 }
 export default Oppo
